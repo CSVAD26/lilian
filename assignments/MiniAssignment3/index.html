@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>p5.js + OpenCV.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.2/p5.js"></script>
+    <!-- Load OpenCV.js -->
+    <script
+      async
+      src="https://docs.opencv.org/4.x/opencv.js"
+      onload="onOpenCvReady()"
+    ></script>
+    <script src="sketch.js"></script>
+  </head>
+  <body>
+    <h3 style="font-family: sans-serif">K-Means Color + Edges</h3>
+    <div id="status">Loading OpenCV...</div>
+
+    <div style="font-family: sans-serif; margin-top: 12px">
+      <div>>> Hold mouse down to overlay images</div>
+      <br />
+      <label>
+        Blur size:
+        <input id="blurSize" type="range" min="1" max="15" value="3" />
+      </label>
+      <br />
+      <label>
+        Low threshold:
+        <input id="lowThreshold" type="range" min="0" max="200" value="50" />
+      </label>
+      <br />
+      <label>
+        High threshold:
+        <input id="highThreshold" type="range" min="0" max="255" value="150" />
+      </label>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        ["blurSize", "lowThreshold", "highThreshold"].forEach((id) => {
+          const input = document.getElementById(id);
+          if (input) {
+            input.addEventListener("input", () => {
+              if (typeof updateEdgeControls === "function") {
+                updateEdgeControls();
+              }
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
