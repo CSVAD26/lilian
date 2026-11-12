@@ -1,0 +1,322 @@
+@import "tailwindcss";
+
+@theme static {
+  --color-background: #121212;
+  --color-surface: #1b1b1c;
+  --color-border: #2c2c2e;
+  --color-foreground: #ececec;
+  --color-secondary: #a8a8ad;
+  --color-muted: #6e6e74;
+  --color-accent: #e8b04a;
+  --color-accent-ink: #1a1408;
+  --color-bar-off: #3a3a3e;
+  --color-canvas: #1e1e20;
+  --color-checkerboard: #26262a;
+  --color-danger: #e5484d;
+  --color-warning: #e5a84d;
+  --color-tooltip: #000d;
+}
+
+:root {
+  --bg: #121212;
+  --surface: #1b1b1c;
+  --border: #2c2c2e;
+  --text: #ececec;
+  --text-2: #a8a8ad;
+  --muted: #6e6e74;
+  --accent: #e8b04a;
+  --accent-ink: #1a1408;
+  --bar-off: #3a3a3e;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+button {
+  color: inherit;
+  font: inherit;
+}
+
+.segmented {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.segmented .label {
+  color: var(--muted);
+  font-size: 12px;
+  padding: 0 8px;
+}
+
+.segmented button {
+  background: none;
+  border: 0;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text-2);
+}
+
+.segmented button.active {
+  background: var(--border);
+  color: var(--text);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+.toggle-input {
+  accent-color: var(--color-accent);
+}
+
+.average-canvas {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  border-radius: 6px;
+  background-color: var(--color-canvas);
+  background-image:
+    linear-gradient(45deg, var(--color-checkerboard) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--color-checkerboard) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--color-checkerboard) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--color-checkerboard) 75%);
+  background-position:
+    0 0,
+    0 8px,
+    8px -8px,
+    -8px 0;
+  background-size: 16px 16px;
+}
+
+.average-status {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.status-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.status-preview,
+.status-refining {
+  background: var(--text-2);
+}
+
+.status-hires {
+  background: var(--accent);
+}
+
+.status-error {
+  background: var(--color-danger);
+}
+
+.progress {
+  display: inline-block;
+  width: 120px;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.progress > span {
+  display: block;
+  height: 100%;
+  background: var(--text-2);
+  transition: width 120ms linear;
+}
+
+.warning {
+  color: #e5a84d;
+}
+
+.btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--muted);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.chip:hover:not(:disabled) {
+  border-color: var(--muted);
+}
+
+.chip:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.chip-count {
+  opacity: 0.65;
+  margin-left: 2px;
+}
+
+.timeline:focus-visible {
+  box-shadow: 0 0 0 2px var(--border);
+}
+
+.timeline svg {
+  display: block;
+  overflow: visible;
+}
+
+.axis-line {
+  stroke: var(--muted);
+  stroke-width: 1;
+}
+
+.grid-line {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+
+.year-divider {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.axis-label {
+  fill: var(--text-2);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  transition: fill 80ms;
+}
+
+.bar-on {
+  fill: var(--accent);
+}
+
+.bar-off {
+  fill: var(--bar-off);
+}
+
+.bar-hover {
+  filter: brightness(1.25);
+}
+
+.brush .selection {
+  fill: var(--accent);
+  fill-opacity: 0.08;
+  stroke: var(--accent);
+  stroke-opacity: 0.7;
+  shape-rendering: crispEdges;
+}
+
+.brush .handle {
+  fill: var(--accent);
+  fill-opacity: 0;
+}
+
+.brush .overlay {
+  cursor: crosshair;
+}
+
+.tooltip {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: -6px;
+  padding: 5px 8px;
+  transform: translate(-50%, -100%);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-tooltip);
+  color: var(--color-foreground);
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.tooltip span {
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .hint {
+    display: none;
+  }
+}
