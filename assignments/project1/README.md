@@ -49,7 +49,7 @@ Users can adjust
 
 #### Inspiration
 
-- Procedural drawing tools like [Fishdraw](<[https://github.com/LingDong-/fishdraw/blob/main/fishdraw.js#L1072](https://github.com/LingDong-/fishdraw/blob/main/fishdraw.js#L1072)>) and [Ian Cheng's 3FACE](<[https://kadist.org/work/3face-3412/](https://kadist.org/work/3face-3412/)>)
+- Procedural drawing tools like [Fishdraw](https://github.com/LingDong-/fishdraw/blob/main/fishdraw.js#L1072) and [Ian Cheng's 3FACE](https://kadist.org/work/3face-3412/)
 - Nature
   - Spinal cord, neural networks
   - Vines, roots
